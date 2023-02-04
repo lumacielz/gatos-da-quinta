@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form enctype="multipart/form-data" action="/cats/new/" method="post">
+        {% csrf_token %}
+        <div style="text-align: center; margin-top: 50px; margin-bottom: 50px">
+            {{ form.as_p }}
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+{% endblock %}
