@@ -2,11 +2,6 @@ main{
     background-color: #f5dd5d;
 }
 
-.descriptionField {
-    width: 300px;
-    height: 200px;
-}
-
 .container-fluid {
     padding: 0;
 }
@@ -54,5 +49,32 @@ footer p {
 }
 
 .card-img-top{
-    height: 25rem;
+    height: 22rem;
+}
+
+.bi-pencil-square, .bi-trash{
+    color: #dddddd;
+    float: right;
+    font-size: 30px;
+    margin-left: 5px;
+}
+
+.bi-plus-square-fill{
+    color: #dddddd;
+    font-size: 30px;
+    float: right;
+    margin-right: 10px;
+    margin-left: 15px;
+    text-align: center;
+}
+
+.new-button{
+    font-size: 20px;
+    background-color: #333333;
+    color: #dddddd;
+    text-align: center;
+}
+
+.button-text{
+    vertical-align: center;
 }
