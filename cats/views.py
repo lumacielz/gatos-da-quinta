@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from django.views.generic import ListView
@@ -12,6 +13,7 @@ class  HomePageView(ListView):
     model = Cat
     template_name = 'cats/home.html'
 
+@login_required
 def CreateView(request):
     if request.method == 'POST':
         form = CatForm(request.POST, request.FILES)
@@ -21,6 +23,25 @@ def CreateView(request):
     else:
         form = CatForm()
     return render(request, 'cats/create.html', {'form': form})
+
+@login_required
+def EditView(request, id):
+    cat = get_object_or_404(Cat, pk=id)
+    form = CatForm(instance=cat)
+
+    if (request.method == 'POST'):
+        form = CatForm(request.POST, instance=cat)
+        if form.is_valid():
+            cat.save()
+            return HttpResponseRedirect('/cats/')
+    else:
+        return render(request, 'cats/create.html', {'form': form, 'cat': cat})
+
+@login_required
+def DeleteView(request, id):
+    cat = get_object_or_404(Cat, pk=id)
+    cat.delete()
+    return HttpResponseRedirect('/cats/')
 
 def AboutView(request):
     return render(request, 'about.html')
@@ -32,6 +53,7 @@ class Login(LoginView):
     template_name = 'login.html'
     fields = '__all__'
     redirect_authenticated_user = True
+
 
 
 
