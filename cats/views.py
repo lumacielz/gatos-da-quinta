@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-
+from django.urls import reverse_lazy
 # Create your views here.
 from django.views.generic import ListView
 from .models import Cat
@@ -48,11 +48,6 @@ def AboutView(request):
 
 def ContactView(request):
     return render(request, 'contact.html')
-
-class Login(LoginView):
-    template_name = 'login.html'
-    fields = '__all__'
-    redirect_authenticated_user = True
 
 
 
