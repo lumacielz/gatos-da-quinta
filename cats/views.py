@@ -49,6 +49,9 @@ def AboutView(request):
 def ContactView(request):
     return render(request, 'contact.html')
 
+#TODO fazer template
+def DonateView(request):
+    return render(request, 'about.html')
 
 
 
